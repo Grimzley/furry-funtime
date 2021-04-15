@@ -19,12 +19,14 @@ public class Options : MonoBehaviour {
     public void Start() {
         fullscreenToggle = GameObject.Find("FullscreenToggle").GetComponent<Toggle>();
         fullscreenToggle.onValueChanged.AddListener(SetFullscreen);
+        fullscreenToggle.isOn = GameManager.isFullscreen;
 
         graphicsDropdown = GameObject.Find("GraphicsDropdown").GetComponent<TMP_Dropdown>();
         graphicsDropdown.ClearOptions();
         List<string> graphicsOptions = new List<string> {"Very Low", "Low", "Medium", "High", "Very High", "Ultra"};
         graphicsDropdown.AddOptions(graphicsOptions);
-        SetQuality(0);
+        SetQuality(GameManager.graphicsIndex);
+        graphicsDropdown.value = GameManager.graphicsIndex;
         graphicsDropdown.onValueChanged.AddListener(SetQuality);
 
         resolutions = Screen.resolutions;
@@ -39,27 +41,32 @@ public class Options : MonoBehaviour {
             }
         }
         resolutionsDropdown.AddOptions(resolutionsOptions);
-        resolutionsDropdown.value = currentResolutionIndex;
+        resolutionsDropdown.value = GameManager.resolutionIndex == -1? currentResolutionIndex: GameManager.resolutionIndex;
         resolutionsDropdown.RefreshShownValue();
         resolutionsDropdown.onValueChanged.AddListener(SetResolution);
 
         volumeSlider = GameObject.Find("VolumeSlider").GetComponent<Slider>();
+        volumeSlider.value = GameManager.volume;
         volumeSlider.onValueChanged.AddListener(SetVolume);
 
         back = GameObject.Find("BackButton").GetComponent<Button>();
         back.onClick.AddListener(Back);
     }
     public void SetFullscreen(bool isFullscreen) {
+        GameManager.isFullscreen = isFullscreen;
         Screen.fullScreen = isFullscreen;
     }
     public void SetQuality(int index) {
+        GameManager.graphicsIndex = index;
         QualitySettings.SetQualityLevel(index);
     }
     public void SetResolution(int index) {
+        GameManager.resolutionIndex = index;
         Resolution resolution = resolutions[index];
         Screen.SetResolution(resolution.width, resolution.height, Screen.fullScreen);
     }
     public void SetVolume(float volume) {
+        GameManager.volume = volume;
         audioMixer.SetFloat("volume", volume);
     }
     public void Back() {
