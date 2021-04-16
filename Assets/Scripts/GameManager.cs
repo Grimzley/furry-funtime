@@ -7,7 +7,7 @@ public class GameManager : MonoBehaviour {
 
     public static GameManager _instance;
 
-    public static int currentLevel = 2;
+    public static int currentLevel = 1;
     public static int numberOfLives = 3;
     public static int numberOfGems = 0;
 
@@ -33,9 +33,11 @@ public class GameManager : MonoBehaviour {
     }
     public static void Death() {
         numberOfLives--;
-        if (numberOfLives <= 0){
-            
-        }
+    }
+    public static void Reset() {
+        currentLevel = 1;
+        numberOfLives = 3;
+        numberOfGems = 0;
     }
     public static void NextLevel() {
         currentLevel++;

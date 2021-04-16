@@ -15,7 +15,7 @@ public class HUD : MonoBehaviour {
         gemsText = GameObject.Find("GemsText").GetComponent<TMP_Text>();
     }
     void Update() {
-        levelText.text = "Level: " + (GameManager.currentLevel - 1);
+        levelText.text = "Level: " + GameManager.currentLevel;
         livesText.text = "Lives: " + GameManager.numberOfLives;
         gemsText.text = "Gems: " + GameManager.numberOfGems;
     }

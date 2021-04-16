@@ -28,9 +28,11 @@ public class PlayerController : MonoBehaviour {
             GameManager.OnGemPickUp();
             Destroy(collision.gameObject);
         }
-        else if (collision.collider.tag == "Spike") {
-            Respawn();
+        else if (collision.collider.tag == "Death") {
             GameManager.Death();
+            if (GameManager.numberOfLives != 0) {
+                Respawn();
+            }
         }
         else if (collision.collider.tag == "LevelEnd") {
             GameManager.NextLevel();
