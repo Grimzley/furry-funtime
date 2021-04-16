@@ -33,6 +33,9 @@ public class GameManager : MonoBehaviour {
     }
     public static void Death() {
         numberOfLives--;
+        if (numberOfLives <= 0){
+            
+        }
     }
     public static void NextLevel() {
         currentLevel++;
