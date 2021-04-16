@@ -5,10 +5,13 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour {
 
     public CharacterController2D controller;
-
+    
     public float runSpeed = 40f;
     public float horizontalMove = 0f;
     public bool jump = false;
+
+    public Transform player;
+    public Transform spawnPoint;
 
     public void Update() {
         horizontalMove = Input.GetAxisRaw("Horizontal") * runSpeed;
@@ -25,8 +28,15 @@ public class PlayerController : MonoBehaviour {
             GameManager.OnGemPickUp();
             Destroy(collision.gameObject);
         }
+        else if (collision.collider.tag == "Spike") {
+            Respawn();
+            GameManager.Death();
+        }
         else if (collision.collider.tag == "LevelEnd") {
             GameManager.NextLevel();
         }
+    }
+    private void Respawn() {
+        player.position = spawnPoint.position;
     }
 }

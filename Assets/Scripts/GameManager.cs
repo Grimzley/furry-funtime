@@ -15,7 +15,7 @@ public class GameManager : MonoBehaviour {
     public static int graphicsIndex = 0;
     public static int resolutionIndex = -1;
     public static float volume = -20f;
-    
+
     private void Awake() {
         if (_instance != null && _instance != this) {
             Destroy(this.gameObject);
@@ -30,6 +30,9 @@ public class GameManager : MonoBehaviour {
             numberOfGems = 0;
             numberOfLives++;
         }
+    }
+    public static void Death() {
+        numberOfLives--;
     }
     public static void NextLevel() {
         currentLevel++;
