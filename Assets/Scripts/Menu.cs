@@ -21,10 +21,10 @@ public class Menu : MonoBehaviour {
         quit.onClick.AddListener(Quit);
     }
     public void Play() {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 2);
+        SceneManager.LoadScene("Level1");
     }
     public void Options() {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        SceneManager.LoadScene("Options");
     }
     public void Quit() {
         #if UNITY_EDITOR

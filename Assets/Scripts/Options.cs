@@ -70,6 +70,6 @@ public class Options : MonoBehaviour {
         audioMixer.SetFloat("volume", volume);
     }
     public void Back() {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex - 1);
+        SceneManager.LoadScene("Menu");
     }
 }
