@@ -20,4 +20,13 @@ public class PlayerController : MonoBehaviour {
         controller.Move(horizontalMove * Time.fixedDeltaTime, false, jump);
         jump = false;
     }
+    public void OnCollisionEnter2D(Collision2D collision) {
+        if (collision.collider.tag == "Gem") {
+            GameManager.OnGemPickUp();
+            Destroy(collision.gameObject);
+        }
+        else if (collision.collider.tag == "LevelEnd") {
+            GameManager.NextLevel();
+        }
+    }
 }
