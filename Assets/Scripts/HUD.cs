@@ -9,12 +9,12 @@ public class HUD : MonoBehaviour {
     public TMP_Text livesText;
     public TMP_Text gemsText;
 
-    void Start() {
+    public void Start() {
         levelText = GameObject.Find("LevelText").GetComponent<TMP_Text>();
         livesText = GameObject.Find("LivesText").GetComponent<TMP_Text>();
         gemsText = GameObject.Find("GemsText").GetComponent<TMP_Text>();
     }
-    void Update() {
+    public void Update() {
         levelText.text = "Level: " + GameManager.currentLevel;
         livesText.text = "Lives: " + GameManager.numberOfLives;
         gemsText.text = "Gems: " + GameManager.numberOfGems;

@@ -8,6 +8,8 @@ public class PlayerController : MonoBehaviour {
 
     public Transition transition;
 
+    public Animator animator;
+
     public float runSpeed = 40f;
     public float horizontalMove = 0f;
     public bool jump = false;
@@ -20,13 +22,18 @@ public class PlayerController : MonoBehaviour {
     }
     public void Update() {
         horizontalMove = Input.GetAxisRaw("Horizontal") * runSpeed;
+        animator.SetFloat("Speed", Mathf.Abs(horizontalMove));
         if (Input.GetButtonDown("Jump")) {
             jump = true;
+            animator.SetBool("isJumping", true);
         }
     }
     public void FixedUpdate() {
         controller.Move(horizontalMove * Time.fixedDeltaTime, false, jump);
         jump = false;
+    }
+    public void OnLanding() {
+        animator.SetBool("isJumping", false);
     }
     public void OnCollisionEnter2D(Collision2D collision) {
         if (collision.collider.tag == "Gem") {
@@ -40,11 +47,12 @@ public class PlayerController : MonoBehaviour {
             }
         }
         else if (collision.collider.tag == "LevelEnd") {
+            collision.collider.tag = "Untagged";
             GameManager.NextLevel();
             transition.LoadNextLevel();
         }
     }
-    private void Respawn() {
+    public void Respawn() {
         player.position = spawnPoint.position;
     }
 }
