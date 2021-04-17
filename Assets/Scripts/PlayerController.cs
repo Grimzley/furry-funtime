@@ -30,7 +30,7 @@ public class PlayerController : MonoBehaviour {
         }
         else if (collision.collider.tag == "Death") {
             GameManager.Death();
-            if (GameManager.numberOfLives != 0) {
+            if (GameManager.numberOfLives > 0) {
                 Respawn();
             }
         }

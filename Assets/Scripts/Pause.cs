@@ -27,7 +27,7 @@ public class Pause : MonoBehaviour {
         pauseMenu.SetActive(false);
     }
     public void Update() {
-        if (Input.GetKeyDown(KeyCode.Escape) || Input.GetKeyDown(KeyCode.P)) {
+        if ((Input.GetKeyDown(KeyCode.Escape) || Input.GetKeyDown(KeyCode.P)) && GameManager.numberOfLives > 0) {
             if (isPaused) {
                 ContinueGame();
             }else {
