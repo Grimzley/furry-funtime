@@ -5,7 +5,9 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour {
 
     public CharacterController2D controller;
-    
+
+    public Transition transition;
+
     public float runSpeed = 40f;
     public float horizontalMove = 0f;
     public bool jump = false;
@@ -13,6 +15,9 @@ public class PlayerController : MonoBehaviour {
     public Transform player;
     public Transform spawnPoint;
 
+    public void Start() {
+        transition = GameObject.Find("Transition").GetComponent<Transition>();
+    }
     public void Update() {
         horizontalMove = Input.GetAxisRaw("Horizontal") * runSpeed;
         if (Input.GetButtonDown("Jump")) {
@@ -36,6 +41,7 @@ public class PlayerController : MonoBehaviour {
         }
         else if (collision.collider.tag == "LevelEnd") {
             GameManager.NextLevel();
+            transition.LoadNextLevel();
         }
     }
     private void Respawn() {

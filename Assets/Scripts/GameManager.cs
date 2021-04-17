@@ -41,6 +41,5 @@ public class GameManager : MonoBehaviour {
     }
     public static void NextLevel() {
         currentLevel++;
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
 }
