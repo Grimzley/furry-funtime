@@ -21,7 +21,7 @@ public class GameOver : MonoBehaviour {
         gameOverScreen.SetActive(false);
     }
     public void Update() {
-        if (GameManager.numberOfLives == 0) {
+        if (GameManager.numberOfLives <= 0) {
             gameOverScreen.SetActive(true);
         }
     }
