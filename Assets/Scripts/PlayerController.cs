@@ -36,12 +36,14 @@ public class PlayerController : MonoBehaviour {
     public void OnLanding() {
         animator.SetBool("isJumping", false);
     }
-    public void OnCollisionEnter2D(Collision2D collision) {
-        if (collision.collider.tag == "Gem") {
+    public void OnTriggerEnter2D(Collider2D collision) {
+        if (collision.tag == "Gem") {
             GameManager.OnGemPickUp();
             Destroy(collision.gameObject);
         }
-        else if (collision.collider.tag == "Death") {
+    }
+    public void OnCollisionEnter2D(Collision2D collision) {
+        if (collision.collider.tag == "Death") {
             GameManager.Death();
             if (GameManager.numberOfLives > 0) {
                 Respawn();
