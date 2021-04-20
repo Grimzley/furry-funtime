@@ -8,7 +8,7 @@ public class GameManager : MonoBehaviour {
     public static GameManager _instance;
 
     public static int currentLevel = 1;
-    public static int numberOfLives = 3;
+    public static int numberOfLives = 5;
     public static int numberOfGems = 0;
 
     public static bool isFullscreen = true;
@@ -26,7 +26,7 @@ public class GameManager : MonoBehaviour {
     }
     public static void OnGemPickUp() {
         numberOfGems++;
-        if (numberOfGems == 5) {
+        if (numberOfGems == 3) {
             numberOfGems = 0;
             numberOfLives++;
         }
@@ -36,7 +36,7 @@ public class GameManager : MonoBehaviour {
     }
     public static void Reset() {
         currentLevel = 1;
-        numberOfLives = 3;
+        numberOfLives = 5;
         numberOfGems = 0;
     }
     public static void NextLevel() {

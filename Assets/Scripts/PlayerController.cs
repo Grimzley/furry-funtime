@@ -16,7 +16,6 @@ public class PlayerController : MonoBehaviour {
 
     public Transform player;
     public Transform spawnPoint;
-    public Transform deadZone;
 
     public void Start() {
         transition = GameObject.Find("Transition").GetComponent<Transition>();
@@ -48,19 +47,19 @@ public class PlayerController : MonoBehaviour {
             if (GameManager.numberOfLives > 0) {
                 Respawn();
             }else {
-                DeadZone();
+                RemovePlayer();
             }
         }
         else if (collision.collider.tag == "LevelEnd") {
             GameManager.NextLevel();
-            DeadZone();
             transition.LoadNextLevel();
+            RemovePlayer();
         }
     }
     public void Respawn() {
         player.position = spawnPoint.position;
     }
-    public void DeadZone() {
-        player.position = deadZone.position;
+    public void RemovePlayer() {
+        Destroy(player.gameObject);
     }
 }

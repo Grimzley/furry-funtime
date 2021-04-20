@@ -21,7 +21,7 @@ public class Menu : MonoBehaviour {
         quit.onClick.AddListener(Quit);
     }
     public void Play() {
-        SceneManager.LoadScene("Level1");
+        SceneManager.LoadScene(GameManager.currentLevel + 1) ;
     }
     public void Options() {
         SceneManager.LoadScene("Options");
