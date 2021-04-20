@@ -11,6 +11,7 @@ public class Menu : MonoBehaviour {
     public Button quit;
     
     public void Start() {
+        // Initialize Buttons
         play = GameObject.Find("PlayButton").GetComponent<Button>();
         play.onClick.AddListener(Play);
 

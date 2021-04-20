@@ -15,6 +15,7 @@ public class Pause : MonoBehaviour {
     public Button quit;
 
     public void Start() {
+        // Initialize Buttons
         play = GameObject.Find("ContinueButton").GetComponent<Button>();
         play.onClick.AddListener(ContinueGame);
 

@@ -10,6 +10,7 @@ public class Credits : MonoBehaviour {
     public Button quit;
 
     public void Start() {
+        // Initialize Buttons
         playAgain = GameObject.Find("PlayAgainButton").GetComponent<Button>();
         playAgain.onClick.AddListener(PlayAgain);
 

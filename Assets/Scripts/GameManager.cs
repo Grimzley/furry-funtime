@@ -7,15 +7,18 @@ public class GameManager : MonoBehaviour {
 
     public static GameManager _instance;
 
+    // In-Game Data
     public static int currentLevel = 1;
     public static int numberOfLives = 5;
     public static int numberOfGems = 0;
 
+    // Options Settings
     public static bool isFullscreen = true;
     public static int graphicsIndex = 0;
     public static int resolutionIndex = -1;
     public static float volume = -20f;
 
+    // Singleton Pattern
     private void Awake() {
         if (_instance != null && _instance != this) {
             Destroy(this.gameObject);

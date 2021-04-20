@@ -10,6 +10,7 @@ public class HUD : MonoBehaviour {
     public TMP_Text gemsText;
 
     public void Start() {
+        // Initialize Text Boxes
         levelText = GameObject.Find("LevelText").GetComponent<TMP_Text>();
         livesText = GameObject.Find("LivesText").GetComponent<TMP_Text>();
         gemsText = GameObject.Find("GemsText").GetComponent<TMP_Text>();

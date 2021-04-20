@@ -12,6 +12,7 @@ public class GameOver : MonoBehaviour {
     public Button quit;
 
     public void Start() {
+        // Intialize Buttons
         tryAgain = GameObject.Find("TryAgainButton").GetComponent<Button>();
         tryAgain.onClick.AddListener(TryAgain);
 

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
+//Handles crossfade transition between levels
 public class Transition : MonoBehaviour {
 
     public Animator transition;

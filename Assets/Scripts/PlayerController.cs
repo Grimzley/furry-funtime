@@ -59,6 +59,7 @@ public class PlayerController : MonoBehaviour {
     public void Respawn() {
         player.position = spawnPoint.position;
     }
+    // Used to prevent player from moving around during 'Game Over' screen or crossfade transition
     public void RemovePlayer() {
         Destroy(player.gameObject);
     }
